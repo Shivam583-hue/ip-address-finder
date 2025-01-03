@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Images",
-  description: "Share images annonymously",
+  description: "Share images anonymously",
 };
 
 export default function RootLayout({
