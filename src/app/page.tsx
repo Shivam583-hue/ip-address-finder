@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Home() {
   const handleSubmit = async (ip: string) => {
     try {
-      const response = await fetch('/api/users', {
+      await fetch('/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -14,8 +14,6 @@ export default function Home() {
         body: JSON.stringify({ ip }),
       });
 
-      const result = await response.json();
-      console.log(result);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -36,7 +34,6 @@ export default function Home() {
     const fetchAndSubmitIP = async () => {
       const ipAddress = await getIPAddress();
       if (ipAddress) {
-        console.log(ipAddress);
         await handleSubmit(ipAddress);
       }
     };
