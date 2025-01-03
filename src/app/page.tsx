@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const handleSubmit = async (ip: string) => {
@@ -45,7 +46,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      {/* Your content here */}
+      <h1 className="text-4xl font-extrabold font-mono underline mb-4 absolute top-5">
+        Share Images Anonymously
+      </h1>
+      <Image width={250}
+        height={500} src="/image.png" alt="image" className="rounded-xl" />
     </div>
   );
 }
