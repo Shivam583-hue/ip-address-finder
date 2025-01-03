@@ -1,7 +1,7 @@
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 
-export const users = sqliteTable("users", {
+export const users = pgTable("users", {
   id: text("id").primaryKey(),
   ip: text("ip"),
-  createdAt: integer("created_at", { mode: "timestamp" }).defaultNow()
+  createdAt: timestamp("created_at").defaultNow()
 });

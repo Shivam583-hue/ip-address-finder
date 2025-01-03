@@ -11,21 +11,21 @@ export async function POST(request: Request) {
     if (!ip) {
       return NextResponse.json(
         { message: 'IP address is required' },
-        { status: 400 }
+        { status: 401 }
       );
     }
 
-    await db.insert(users).values({ id, ip }).run();
+    await db.insert(users).values({ id, ip });
 
     return NextResponse.json(
       { message: 'User added successfully' },
-      { status: 201 }
+      { status: 202 }
     );
   } catch (error) {
     console.error(error);
     return NextResponse.json(
       { message: 'Internal Server Error' },
-      { status: 500 }
+      { status: 501 }
     );
   }
 }
@@ -39,13 +39,13 @@ export async function GET() {
         message: 'Users retrieved successfully',
         users: allUsers
       },
-      { status: 200 }
+      { status: 201 }
     );
   } catch (error) {
     console.error(error);
     return NextResponse.json(
       { message: 'Internal Server Error' },
-      { status: 500 }
+      { status: 501 }
     );
   }
 }

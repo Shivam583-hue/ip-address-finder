@@ -1,8 +1,8 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
+import { drizzle } from "drizzle-orm/neon-http";
+import { neon } from "@neondatabase/serverless";
+import { config } from "dotenv";
 
-// Create a new SQLite database file (or use an existing one)
-const sqlite = new Database("sqlite.db");
+config({ path: ".env" });
 
-// Initialize the Drizzle ORM instance
-export const db = drizzle(sqlite);
+const sql = neon(process.env.DATABASE_URL!);
+export const db = drizzle({ client: sql });
